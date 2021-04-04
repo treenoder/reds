@@ -1,16 +1,19 @@
-from setuptools import setup
+import setuptools
 
-from reds import VERSION
+with open('README.md', 'r', encoding='utf-8') as fh:
+    long_description = fh.read()
 
-setup(
+setuptools.setup(
     name='reds',
-    version=VERSION,
-    packages=['reds'],
+    version='0.1.1',
+    packages=setuptools.find_packages(where='reds'),
     url='https://github.com/treenoder/reds',
     license='MIT',
     author='treenoder',
     author_email='ondaemon@gmail.com',
     description='Request/Response library on top of Redis.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
