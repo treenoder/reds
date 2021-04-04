@@ -43,11 +43,11 @@ class Reds:
         return Task.new(reds=self, task_dict=task_dict)
 
     def task_from(self, data):
-        # type: (Union[str, bytes, dict]) -> Task
+        # type: (Union[str, bytes, bytearray, dict]) -> Task
         """
         Create task from existing data. json string, json bytes or dict
         """
-        if isinstance(data, str) or isinstance(data, bytes):
+        if isinstance(data, str) or isinstance(data, bytes) or isinstance(data, bytearray):
             return Task.from_json(reds=self, json_data=data)
         elif isinstance(data, dict):
             return Task.from_dict(reds=self, data=data)

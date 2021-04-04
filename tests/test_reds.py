@@ -1,11 +1,13 @@
 import json
 from typing import cast
 from unittest import mock
-from redis import StrictRedis, Redis
+
+from redis import Redis
+
 from reds import Reds, Task
 
 
-def test_reds_create():
+def test_create():
     key = 'test'
     redis = cast(Redis, mock.MagicMock())
     reds = Reds(redis=redis, key=key)

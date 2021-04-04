@@ -35,10 +35,14 @@ class Task:
         }
 
     def get_response(self, block=True):
+        key = self.reds.response_key + ':' + self.task_id
         if block:
-            json_data = self.reds.redis.brpop(self.reds.response_key + ':' + self.task_id)[1]
+            json_data = self.reds.redis.brpop(key)[1]
         else:
-            json_data = self.reds.redis.rpop(self.reds.response_key + ':' + self.task_id)
+            json_data = self.reds.redis.rpop(key)
+        if json_data is None:
+            return None
+        self.reds.redis.delete(key)
         return json.loads(json_data)
 
     def send(self, wait_for_response=True):
