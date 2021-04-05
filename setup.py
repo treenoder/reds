@@ -38,6 +38,6 @@ setuptools.setup(
     ],
     install_requires=['redis'],
     setup_requires=['pytest-runner'],
-    tests_require=['setuptools_scm<6.0.0', 'pytest'],
+    tests_require=['pytest<5.0.0'],
     test_suite='tests',
 )
