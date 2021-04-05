@@ -1,5 +1,6 @@
 [![Python package](https://github.com/treenoder/reds/actions/workflows/python-package.yml/badge.svg)](https://github.com/treenoder/reds/actions/workflows/python-package.yml)
-[![Supported Versions](https://img.shields.io/pypi/pyversions/requests.svg)](https://pypi.org/project/reds)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/reds)](https://pypi.org/project/reds)
+
 # reds
 Request/Response library on top of Redis.
 
