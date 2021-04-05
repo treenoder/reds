@@ -1,6 +1,9 @@
 import json
 from typing import cast
-from unittest import mock
+try:
+    from unittest import mock
+except ImportError:
+    import mock
 
 from redis import Redis
 
