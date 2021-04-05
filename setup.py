@@ -6,6 +6,7 @@ with open('README.md', 'rb') as fh:
 setuptools.setup(
     name='reds',
     version='0.1.2',
+    package_dir={'': 'src'},
     packages=['reds'],
     url='https://github.com/treenoder/reds',
     license='MIT',
@@ -37,6 +38,6 @@ setuptools.setup(
     ],
     install_requires=['redis'],
     setup_requires=['pytest-runner'],
-    tests_require=['setuptools_scm<6.0.0', 'pytest<5.0.0'],
+    tests_require=['pytest'],
     test_suite='tests',
 )
