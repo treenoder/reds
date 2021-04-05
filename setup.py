@@ -5,8 +5,9 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='reds',
-    version='0.1.1',
-    packages=setuptools.find_packages(where='reds'),
+    version='0.1.2',
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where='src'),
     url='https://github.com/treenoder/reds',
     license='MIT',
     author='treenoder',
