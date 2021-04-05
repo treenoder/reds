@@ -3,7 +3,7 @@ __all__ = 'VERSION', 'version_info'
 VERSION = '0.1.2'
 
 
-def version_info() -> str:
+def version_info():
     import platform
     import sys
     from pathlib import Path
