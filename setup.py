@@ -1,7 +1,7 @@
 import setuptools
 
-with open('README.md', 'r', encoding='utf-8') as fh:
-    long_description = fh.read()
+with open('README.md', 'rb') as fh:
+    long_description = fh.read().decode('utf-8')
 
 setuptools.setup(
     name='reds',
