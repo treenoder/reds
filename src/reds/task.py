@@ -4,6 +4,8 @@ import uuid
 
 __all__ = 'Task'
 
+from typing import Optional
+
 
 class Task:
     def __init__(self, reds, task_id, task_dict):
@@ -29,15 +31,17 @@ class Task:
         )
 
     def to_dict(self):
+        # type: () -> dict
         return {
             'task_id': self.task_id,
             'task_dict': self.task_dict
         }
 
-    def get_response(self, block=True):
+    def get_response(self, block=True, timeout=0):
+        # type: (bool, int) -> Optional[dict]
         key = self.reds.response_key + ':' + self.task_id
         if block:
-            json_data = self.reds.redis.brpop(key)[1]
+            json_data = self.reds.redis.brpop(key, timeout)[1]
         else:
             json_data = self.reds.redis.rpop(key)
         if json_data is None:
@@ -45,12 +49,14 @@ class Task:
         self.reds.redis.delete(key)
         return json.loads(json_data)
 
-    def send(self, wait_for_response=True):
+    def send(self, wait_for_response=True, timeout=0):
+        # type: (bool, int) -> Optional[dict]
         self.reds.redis.lpush(self.reds.request_key, json.dumps(self.to_dict()))
         if wait_for_response:
-            return self.get_response(block=wait_for_response)
+            return self.get_response(block=wait_for_response, timeout=timeout)
 
     def respond(self, task_dict):
+        # type: (dict) -> None
         self.reds.redis.lpush(self.reds.response_key + ':' + self.task_id, json.dumps(task_dict))
 
     def __str__(self):
