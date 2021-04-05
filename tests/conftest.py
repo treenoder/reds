@@ -40,7 +40,8 @@ def redis(monkeypatch):
 
     def mock_brpop(key, timeout=0):
         storage = get_storage(key)
-        time.sleep(0.1)
+        if timeout:
+            return None
         return key, storage[key].pop()
 
     def mock_delete(key):

@@ -41,7 +41,10 @@ class Task:
         # type: (bool, int) -> Optional[dict]
         key = self.reds.response_key + ':' + self.task_id
         if block:
-            json_data = self.reds.redis.brpop(key, timeout)[1]
+            result = self.reds.redis.brpop(key, timeout)
+            if result is None:
+                return None
+            json_data = result[1]
         else:
             json_data = self.reds.redis.rpop(key)
         if json_data is None:
