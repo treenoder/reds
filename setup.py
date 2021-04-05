@@ -6,7 +6,6 @@ with open('README.md', 'rb') as fh:
 setuptools.setup(
     name='reds',
     version='0.1.2',
-    package_dir={"": "src"},
     packages=['reds'],
     url='https://github.com/treenoder/reds',
     license='MIT',
