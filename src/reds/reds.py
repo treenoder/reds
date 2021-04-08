@@ -1,4 +1,4 @@
-from typing import Union, Generator
+from typing import Union, Generator, Text
 
 from redis import StrictRedis, Redis
 
@@ -9,7 +9,7 @@ __all__ = 'Reds'
 
 class Reds:
     def __init__(self, redis, key):
-        # type: (Union[Redis, StrictRedis], Union[str, bytes]) -> None
+        # type: (Union[Redis, StrictRedis], Text) -> None
         self.redis = redis
         self.request_key = key + ':request'
         self.response_key = key + ':response'
