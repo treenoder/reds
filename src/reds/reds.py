@@ -9,7 +9,7 @@ __all__ = 'Reds'
 
 class Reds:
     def __init__(self, redis, key):
-        # type: (Union[Redis, StrictRedis], str) -> None
+        # type: (Union[Redis, StrictRedis], Union[str, bytes]) -> None
         self.redis = redis
         self.request_key = key + ':request'
         self.response_key = key + ':response'
